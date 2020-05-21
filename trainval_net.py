@@ -95,6 +95,16 @@ def parse_args():
   parser.add_argument('--lr_decay_gamma', dest='lr_decay_gamma',
                       help='learning rate decay ratio',
                       default=0.1, type=float)
+# masknet config optimization
+  parser.add_argument('--lr_mask', dest='lrmask',
+                      help='starting learning rate',
+                      default=0.001, type=float)
+  parser.add_argument('--lr_decay_step_mask', dest='lr_decay_step_mask',
+                      help='step to do learning rate decay, unit is epoch',
+                      default=5, type=int)
+  parser.add_argument('--lr_decay_gamma_mask', dest='lr_decay_gamma_mask',
+                      help='learning rate decay ratio',
+                      default=0.1, type=float)
 
 # set training session
   parser.add_argument('--s', dest='session',
@@ -253,6 +263,7 @@ if __name__ == '__main__':
   maskNet = MaskMan(n_channels = 512)
   lr = cfg.TRAIN.LEARNING_RATE
   lr = args.lr
+  lr_mask = args.lr_mask
   #tr_momentum = cfg.TRAIN.MOMENTUM
   #tr_momentum = args.momentum
 
@@ -266,6 +277,9 @@ if __name__ == '__main__':
                 'weight_decay': cfg.TRAIN.BIAS_DECAY and cfg.TRAIN.WEIGHT_DECAY or 0}]
       else:
         params += [{'params':[value],'lr':lr, 'weight_decay': cfg.TRAIN.WEIGHT_DECAY}]
+  
+
+
   # import sys
   # sys.exit()
   if args.cuda:
@@ -274,20 +288,27 @@ if __name__ == '__main__':
   if args.optimizer == "adam":
     lr = lr * 0.1
     optimizer = torch.optim.Adam(params)
+    optimizerMask = torch.optim.Adam(maskNet.parameters(), lr = args.lr_mask)
 
   elif args.optimizer == "sgd":
     optimizer = torch.optim.SGD(params, momentum=cfg.TRAIN.MOMENTUM)
-
+    optimizerMask = torch.optim.SGD(maskNet.parameters(), lr = args.lr_mask) )
   if args.resume:
     load_name = os.path.join(output_dir,
       'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+    load_name_mask = os.path.join(output_dir,
+      'maskNet_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
     print("loading checkpoint %s" % (load_name))
     checkpoint = torch.load(load_name)
+    checkpointMask = torch.load(load)
     args.session = checkpoint['session']
     args.start_epoch = checkpoint['epoch']
     fasterRCNN.load_state_dict(checkpoint['model'])
+    maskNet.load_state_dict(checkpointMask['model'])
     optimizer.load_state_dict(checkpoint['optimizer'])
+    optimizerMask.load_state_dict(checkpoint['optimizer'])
     lr = optimizer.param_groups[0]['lr']
+    lr_mask = optimizerMask.param_groups[0]['lr']
     if 'pooling_mode' in checkpoint.keys():
       cfg.POOLING_MODE = checkpoint['pooling_mode']
     print("loaded checkpoint %s" % (load_name))
@@ -305,12 +326,15 @@ if __name__ == '__main__':
     # setting to train mode
     fasterRCNN.train()
     loss_temp = 0
+    lossMask_temp = 0
     start = time.time()
 
     if epoch % (args.lr_decay_step + 1) == 0:
         adjust_learning_rate(optimizer, args.lr_decay_gamma)
         lr *= args.lr_decay_gamma
-
+    if epoch % (args.lr_decay_step_mask + 1) == 0:
+        adjust_learning_rate(optimizerMask, args.lr_decay_gamma_mask)
+        args.lr_mask *= args.lr_decay_gamma_mask
     data_iter = iter(dataloader)
     for step in range(iters_per_epoch):
       data = next(data_iter)
@@ -319,12 +343,12 @@ if __name__ == '__main__':
               im_info.resize_(data[1].size()).copy_(data[1])
               gt_boxes.resize_(data[2].size()).copy_(data[2])
               num_boxes.resize_(data[3].size()).copy_(data[3])
-
+      maskNet.zero_grad()
       fasterRCNN.zero_grad()
       rois, cls_prob, bbox_pred, \
       rpn_loss_cls, rpn_loss_box, \
       RCNN_loss_cls, RCNN_loss_bbox, \
-      rois_label = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, 0, maskNet)
+      rois_label, mask = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, 1, maskNet)
 
       loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
            + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
@@ -337,6 +361,27 @@ if __name__ == '__main__':
           clip_gradient(fasterRCNN, 10.)
       optimizer.step()
 
+      maskNet.zero_grad()
+      fasterRCNN.zero_grad()
+      rois, cls_prob, bbox_pred, \
+      rpn_loss_cls, rpn_loss_box, \
+      RCNN_loss_cls, RCNN_loss_bbox, \
+      rois_label, mask = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, 1, maskNet)
+      if use_cuda:
+          lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()).cuda(), reduction = 'mean')
+      else:
+          lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()), reduction = 'mean')
+      lossSize = 0
+      if lossSize1 > 0.25:
+          lossSize = ((lossSize1 - 0.25)).pow(2)
+      elif lossSize1 < 0.10:
+          lossSize = (100 * (0.10 - lossSize1).pow(2))
+      lossMaskClassification = rpn_loss_cls.mean() + RCNN_loss_cls.mean()
+      lossMask = -lossMaskClassification + lossSize/100
+      optimizerMask.zero_grad()
+      lossMask_temp += lossMask.item()
+      lossMask.backward()
+      optimizerMask.step()
       if step % args.disp_interval == 0:
         end = time.time()
         if step > 0:
@@ -356,27 +401,41 @@ if __name__ == '__main__':
           loss_rcnn_box = RCNN_loss_bbox.item()
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
+          lossMask_record = lossMask.item()
+          lossMaskClassification_record = lossMaskClassification.item()
+          lossSize_record = lossSize.item()
+          losssize1_record = losssize1.item()
 
-        print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e" \
-                                % (args.session, epoch, step, iters_per_epoch, loss_temp, lr))
+        print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e, lr_mask%.4e" \
+                                % (args.session, epoch, step, iters_per_epoch, loss_temp, lr. lr_mask))
         print("\t\t\tfg/bg=(%d/%d), time cost: %f" % (fg_cnt, bg_cnt, end-start))
         print("\t\t\trpn_cls: %.4f, rpn_box: %.4f, rcnn_cls: %.4f, rcnn_box %.4f" \
                       % (loss_rpn_cls, loss_rpn_box, loss_rcnn_cls, loss_rcnn_box))
+
+        print("\t\t\tlossMask_record: %.4f, lossMaskClassification_record: %.4f, lossSize_record: %.4f, losssize1_record %.4f" \
+                      % (lossMask_record, lossMaskClassification_record, lossSize_record, losssize1_record))
         if args.use_tfboard:
           info = {
             'loss': loss_temp,
             'loss_rpn_cls': loss_rpn_cls,
             'loss_rpn_box': loss_rpn_box,
             'loss_rcnn_cls': loss_rcnn_cls,
-            'loss_rcnn_box': loss_rcnn_box
+            'loss_rcnn_box': loss_rcnn_box,
+            'lossMask_record': lossMask_record,
+            'lossMaskClassification_record': lossMaskClassification_record, 
+            'lossSize_record': lossSize_record,
+            'losssize1_record': losssize1_record
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
 
         loss_temp = 0
+        lossMask_temp = 0
         start = time.time()
 
     
     save_name = os.path.join(output_dir, 'faster_rcnn_{}_{}_{}.pth'.format(args.session, epoch, step))
+    save_name_mask = os.path.join(output_dir, 'maskNet_{}_{}_{}.pth'.format(args.session, epoch, step))
+
     save_checkpoint({
       'session': args.session,
       'epoch': epoch + 1,
@@ -385,7 +444,16 @@ if __name__ == '__main__':
       'pooling_mode': cfg.POOLING_MODE,
       'class_agnostic': args.class_agnostic,
     }, save_name)
-    print('save model: {}'.format(save_name))
+
+    save_checkpoint({
+      'session': args.session,
+      'epoch': epoch + 1,
+      'model': maskNet.module.state_dict() if args.mGPUs else maskNet.state_dict(),
+      'optimizer': optimizerMask.state_dict(),
+      'pooling_mode': cfg.POOLING_MODE,
+      'class_agnostic': args.class_agnostic,
+    }, save_name_mask)
+    print('save model_mask: {}'.format(save_name_mask))
 
   if args.use_tfboard:
     logger.close()

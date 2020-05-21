@@ -41,7 +41,7 @@ class _fasterRCNN(nn.Module):
         self.RCNN_roi_align = ROIAlign((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0, 0)
         # self.maskNet = MaskMan(n_channels = 512)
 
-    def forward(self, im_data, im_info, gt_boxes, num_boxes, return_mask, maskNet):
+    def forward(self, im_data, im_info, gt_boxes, num_boxes, apply_mask, maskNet):
         batch_size = im_data.size(0)
 
         im_info = im_info.data
@@ -79,12 +79,12 @@ class _fasterRCNN(nn.Module):
         elif cfg.POOLING_MODE == 'pool':
             pooled_feat = self.RCNN_roi_pool(base_feat, rois.view(-1,5))
 
-        if self.training and return_mask == 1:
+        if self.training and apply_mask == 1:
             mask = gumbel_softmax(maskNet(pooled_feat))
             pooled_feat = torch.mul(mask, pooled_feat)
         
         # feed pooled features to top model
-        print(pooled_feat.size(), "size")
+        # print(pooled_feat.size(), "size")
         pooled_feat = self._head_to_tail(pooled_feat)
         # compute bbox offset
         bbox_pred = self.RCNN_bbox_pred(pooled_feat)
@@ -111,7 +111,7 @@ class _fasterRCNN(nn.Module):
 
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)
         bbox_pred = bbox_pred.view(batch_size, rois.size(1), -1)
-        if not return_mask:
+        if not apply_mask:
             return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label
         else:
             return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label, mask
