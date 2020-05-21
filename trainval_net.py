@@ -405,7 +405,10 @@ if __name__ == '__main__':
           bg_cnt = rois_label.data.numel() - fg_cnt
           lossMask_record = lossMask.item()
           lossMaskClassification_record = lossMaskClassification.item()
-          lossSize_record = lossSize.item()
+          if lossSize == 0:
+            lossMask_record = 0
+          else:
+            lossSize_record = lossSize.item()
           lossSize1_record = lossSize1.item()
 
         print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e, lr_mask%.4e" \
