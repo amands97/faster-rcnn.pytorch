@@ -292,7 +292,7 @@ if __name__ == '__main__':
 
   elif args.optimizer == "sgd":
     optimizer = torch.optim.SGD(params, momentum=cfg.TRAIN.MOMENTUM)
-    optimizerMask = torch.optim.SGD(maskNet.parameters(), lr = args.lr_mask) )
+    optimizerMask = torch.optim.SGD(maskNet.parameters(), lr = args.lr_mask)
   if args.resume:
     load_name = os.path.join(output_dir,
       'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
