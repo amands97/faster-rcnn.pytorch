@@ -42,7 +42,7 @@ class _fasterRCNN(nn.Module):
         self.RCNN_roi_align = ROIAlign((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0, 0)
         self.maskNet = MaskMan(n_channels = 512)
 
-    def forward(self, im_data, im_info, gt_boxes, num_boxes):
+    def forward(self, im_data, im_info, gt_boxes, num_boxes, return_mask):
         batch_size = im_data.size(0)
 
         im_info = im_info.data
@@ -80,21 +80,11 @@ class _fasterRCNN(nn.Module):
         elif cfg.POOLING_MODE == 'pool':
             pooled_feat = self.RCNN_roi_pool(base_feat, rois.view(-1,5))
 
-
-        print(pooled_feat.size())
-        print(self.maskNet(pooled_feat).size(), "masknet output size")
-        # feed pooled features to top model
-        mask = gumbel_softmax(self.maskNet(pooled_feat))
-        print(mask.size(), "mask size")
-        print("mask size")
-        print(pooled_feat)        
-        print(mask)
-        pooled_feat = torch.mul(mask, pooled_feat)
-        print(pooled_feat.size(), "multiplied")
-        print(pooled_feat)        
+        if self.training and return_mask == 1:
+            mask = gumbel_softmax(self.maskNet(pooled_feat))
+            pooled_feat = torch.mul(mask, pooled_feat)
         
-        import sys
-        sys.exit()
+        # feed pooled features to top model
         pooled_feat = self._head_to_tail(pooled_feat)
 
         # compute bbox offset
@@ -122,8 +112,10 @@ class _fasterRCNN(nn.Module):
 
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)
         bbox_pred = bbox_pred.view(batch_size, rois.size(1), -1)
-
-        return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label
+        if not return_mask:
+            return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label
+        else:
+            return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label, mask
 
     def _init_weights(self):
         def normal_init(m, mean, stddev, truncated=False):
