@@ -19,6 +19,7 @@ import time
 import pdb
 from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_grid_gen, _affine_theta
 from adversary.maskNet import MaskMan
+from adversary.gumbel import gumbel_softmax
 class _fasterRCNN(nn.Module):
     """ faster RCNN """
     def __init__(self, classes, class_agnostic):
@@ -83,6 +84,11 @@ class _fasterRCNN(nn.Module):
         print(pooled_feat.size())
         print(self.maskNet(pooled_feat).size(), "masknet output size")
         # feed pooled features to top model
+        mask = gumbel_softmax(self.maskNet(pooled_feat))
+        print(mask.size(), "mask size")
+        print("mask size")
+        pooled_feat = torch.mul(mask, pooled_feat)
+        print(pooled_feat.size(), "multiplied")
         pooled_feat = self._head_to_tail(pooled_feat)
 
         # compute bbox offset
