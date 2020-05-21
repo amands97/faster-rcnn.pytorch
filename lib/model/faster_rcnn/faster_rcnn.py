@@ -87,8 +87,14 @@ class _fasterRCNN(nn.Module):
         mask = gumbel_softmax(self.maskNet(pooled_feat))
         print(mask.size(), "mask size")
         print("mask size")
+        print(pooled_feat)        
+        print(mask)
         pooled_feat = torch.mul(mask, pooled_feat)
         print(pooled_feat.size(), "multiplied")
+        print(pooled_feat)        
+        
+        import sys
+        sys.exit()
         pooled_feat = self._head_to_tail(pooled_feat)
 
         # compute bbox offset
