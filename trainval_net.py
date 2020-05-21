@@ -34,7 +34,6 @@ from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.resnet import resnet
 
 from adversary.maskNet import MaskMan
-from adversary.gumbel import gumbel_softmax
 
 def parse_args():
   """

@@ -10,6 +10,7 @@ from model.utils.config import cfg
 from model.rpn.rpn import _RPN
 
 from model.roi_layers import ROIAlign, ROIPool
+from adversary.gumbel import gumbel_softmax
 
 # from model.roi_pooling.modules.roi_pool import _RoIPooling
 # from model.roi_align.modules.roi_align import RoIAlignAvg
