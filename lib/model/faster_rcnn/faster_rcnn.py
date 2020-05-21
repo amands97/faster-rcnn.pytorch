@@ -18,7 +18,7 @@ from model.rpn.proposal_target_layer_cascade import _ProposalTargetLayer
 import time
 import pdb
 from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_grid_gen, _affine_theta
-
+from adversary.maskNet import MaskMan
 class _fasterRCNN(nn.Module):
     """ faster RCNN """
     def __init__(self, classes, class_agnostic):
@@ -39,6 +39,7 @@ class _fasterRCNN(nn.Module):
 
         self.RCNN_roi_pool = ROIPool((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0)
         self.RCNN_roi_align = ROIAlign((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0, 0)
+        self.maskNet = MaskMan(n_channels = 512)
 
     def forward(self, im_data, im_info, gt_boxes, num_boxes):
         batch_size = im_data.size(0)
@@ -80,7 +81,7 @@ class _fasterRCNN(nn.Module):
 
 
         print(pooled_feat.size())
-
+        print(maskNet(pooled_feat).size(), "masknet output size")
         # feed pooled features to top model
         pooled_feat = self._head_to_tail(pooled_feat)
 
