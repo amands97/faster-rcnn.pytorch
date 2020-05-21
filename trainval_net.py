@@ -259,7 +259,7 @@ if __name__ == '__main__':
     pdb.set_trace()
 
   fasterRCNN.create_architecture()
-  maskNet = MaskMan(n_channels = 512)
+  maskNet = MaskMan(n_channels = 512).cuda()
   lr = cfg.TRAIN.LEARNING_RATE
   lr = args.lr
   lr_mask = args.lr_mask
