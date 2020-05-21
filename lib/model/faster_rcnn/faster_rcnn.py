@@ -81,7 +81,7 @@ class _fasterRCNN(nn.Module):
 
 
         print(pooled_feat.size())
-        print(maskNet(pooled_feat).size(), "masknet output size")
+        print(self.maskNet(pooled_feat).size(), "masknet output size")
         # feed pooled features to top model
         pooled_feat = self._head_to_tail(pooled_feat)
 
