@@ -18,8 +18,7 @@ from model.rpn.proposal_target_layer_cascade import _ProposalTargetLayer
 import time
 import pdb
 from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_grid_gen, _affine_theta
-from adversary.maskNet import MaskMan
-from adversary.gumbel import gumbel_softmax
+
 class _fasterRCNN(nn.Module):
     """ faster RCNN """
     def __init__(self, classes, class_agnostic):
@@ -40,9 +39,9 @@ class _fasterRCNN(nn.Module):
 
         self.RCNN_roi_pool = ROIPool((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0)
         self.RCNN_roi_align = ROIAlign((cfg.POOLING_SIZE, cfg.POOLING_SIZE), 1.0/16.0, 0)
-        self.maskNet = MaskMan(n_channels = 512)
+        # self.maskNet = MaskMan(n_channels = 512)
 
-    def forward(self, im_data, im_info, gt_boxes, num_boxes, return_mask):
+    def forward(self, im_data, im_info, gt_boxes, num_boxes, return_mask, maskNet):
         batch_size = im_data.size(0)
 
         im_info = im_info.data
@@ -81,12 +80,12 @@ class _fasterRCNN(nn.Module):
             pooled_feat = self.RCNN_roi_pool(base_feat, rois.view(-1,5))
 
         if self.training and return_mask == 1:
-            mask = gumbel_softmax(self.maskNet(pooled_feat))
+            mask = gumbel_softmax(maskNet(pooled_feat))
             pooled_feat = torch.mul(mask, pooled_feat)
         
         # feed pooled features to top model
         pooled_feat = self._head_to_tail(pooled_feat)
-
+        print(pooled_feat.size(). "size")
         # compute bbox offset
         bbox_pred = self.RCNN_bbox_pred(pooled_feat)
         if self.training and not self.class_agnostic:
