@@ -404,7 +404,7 @@ if __name__ == '__main__':
           lossMask_record = lossMask.item()
           lossMaskClassification_record = lossMaskClassification.item()
           lossSize_record = lossSize.item()
-          losssize1_record = losssize1.item()
+          lossSize1_record = lossSize1.item()
 
         print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e, lr_mask%.4e" \
                                 % (args.session, epoch, step, iters_per_epoch, loss_temp, lr, lr_mask))
@@ -412,8 +412,8 @@ if __name__ == '__main__':
         print("\t\t\trpn_cls: %.4f, rpn_box: %.4f, rcnn_cls: %.4f, rcnn_box %.4f" \
                       % (loss_rpn_cls, loss_rpn_box, loss_rcnn_cls, loss_rcnn_box))
 
-        print("\t\t\tlossMask_record: %.4f, lossMaskClassification_record: %.4f, lossSize_record: %.4f, losssize1_record %.4f" \
-                      % (lossMask_record, lossMaskClassification_record, lossSize_record, losssize1_record))
+        print("\t\t\tlossMask_record: %.4f, lossMaskClassification_record: %.4f, lossSize_record: %.4f, lossSize1_record %.4f" \
+                      % (lossMask_record, lossMaskClassification_record, lossSize_record, lossSize1_record))
         if args.use_tfboard:
           info = {
             'loss': loss_temp,
@@ -424,7 +424,7 @@ if __name__ == '__main__':
             'lossMask_record': lossMask_record,
             'lossMaskClassification_record': lossMaskClassification_record, 
             'lossSize_record': lossSize_record,
-            'losssize1_record': losssize1_record
+            'lossSize1_record': lossSize1_record
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
 
