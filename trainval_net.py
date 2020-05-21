@@ -96,7 +96,7 @@ def parse_args():
                       help='learning rate decay ratio',
                       default=0.1, type=float)
 # masknet config optimization
-  parser.add_argument('--lr_mask', dest='lrmask',
+  parser.add_argument('--lr_mask', dest='lr_mask',
                       help='starting learning rate',
                       default=0.001, type=float)
   parser.add_argument('--lr_decay_step_mask', dest='lr_decay_step_mask',
@@ -407,7 +407,7 @@ if __name__ == '__main__':
           losssize1_record = losssize1.item()
 
         print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e, lr_mask%.4e" \
-                                % (args.session, epoch, step, iters_per_epoch, loss_temp, lr. lr_mask))
+                                % (args.session, epoch, step, iters_per_epoch, loss_temp, lr, lr_mask))
         print("\t\t\tfg/bg=(%d/%d), time cost: %f" % (fg_cnt, bg_cnt, end-start))
         print("\t\t\trpn_cls: %.4f, rpn_box: %.4f, rcnn_cls: %.4f, rcnn_box %.4f" \
                       % (loss_rpn_cls, loss_rpn_box, loss_rcnn_cls, loss_rcnn_box))
