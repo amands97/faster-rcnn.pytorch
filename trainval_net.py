@@ -366,10 +366,10 @@ if __name__ == '__main__':
       rpn_loss_cls, rpn_loss_box, \
       RCNN_loss_cls, RCNN_loss_bbox, \
       rois_label, mask = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, 1, maskNet)
-      if use_cuda:
-          lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()).cuda(), reduction = 'mean')
-      else:
-          lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()), reduction = 'mean')
+      # if use_cuda:
+      lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()).cuda(), reduction = 'mean')
+      # else:
+          # lossSize1 = F.l1_loss(mask, target=torch.ones(mask.size()), reduction = 'mean')
       lossSize = 0
       if lossSize1 > 0.25:
           lossSize = ((lossSize1 - 0.25)).pow(2)
