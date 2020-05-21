@@ -376,7 +376,7 @@ if __name__ == '__main__':
           lossSize = (100 * (lossSize1 - 0.25)).pow(2)
       elif lossSize1 < 0.10:
           lossSize = (100 * (0.10 - lossSize1).pow(2))
-      print(lossSize, lossSIze1)
+      print(lossSize, lossSize1)
 
       lossMaskClassification = rpn_loss_cls.mean() + RCNN_loss_cls.mean()
       lossMask = -lossMaskClassification + lossSize/100
