@@ -84,8 +84,8 @@ class _fasterRCNN(nn.Module):
             pooled_feat = torch.mul(mask, pooled_feat)
         
         # feed pooled features to top model
-        pooled_feat = self._head_to_tail(pooled_feat)
         print(pooled_feat.size(), "size")
+        pooled_feat = self._head_to_tail(pooled_feat)
         # compute bbox offset
         bbox_pred = self.RCNN_bbox_pred(pooled_feat)
         if self.training and not self.class_agnostic:
