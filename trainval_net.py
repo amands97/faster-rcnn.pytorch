@@ -386,6 +386,7 @@ if __name__ == '__main__':
       optimizerMask.zero_grad()
       lossMask_temp += lossMask.item()
       lossMask.backward()
+      clip_gradient(maskNet, 10.)
       optimizerMask.step()
       if step % args.disp_interval == 0:
         end = time.time()
