@@ -382,7 +382,7 @@ if __name__ == '__main__':
       print(lossSize, lossSize1)
 
       lossMaskClassification = rpn_loss_cls.mean() + RCNN_loss_cls.mean()
-      lossMask = -lossMaskClassification + lossSize/100
+      lossMask = -lossMaskClassification + lossSize/10
       optimizerMask.zero_grad()
       lossMask_temp += lossMask.item()
       lossMask.backward()
