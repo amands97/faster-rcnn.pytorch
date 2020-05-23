@@ -1,0 +1,2239 @@
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=1, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_1_2504.pth
+load model successfully!
+Evaluating detections0.061s 0.026s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+Reading annotation for 1/4952
+Reading annotation for 101/4952
+Reading annotation for 201/4952
+Reading annotation for 301/4952
+Reading annotation for 401/4952
+Reading annotation for 501/4952
+Reading annotation for 601/4952
+Reading annotation for 701/4952
+Reading annotation for 801/4952
+Reading annotation for 901/4952
+Reading annotation for 1001/4952
+Reading annotation for 1101/4952
+Reading annotation for 1201/4952
+Reading annotation for 1301/4952
+Reading annotation for 1401/4952
+Reading annotation for 1501/4952
+Reading annotation for 1601/4952
+Reading annotation for 1701/4952
+Reading annotation for 1801/4952
+Reading annotation for 1901/4952
+Reading annotation for 2001/4952
+Reading annotation for 2101/4952
+Reading annotation for 2201/4952
+Reading annotation for 2301/4952
+Reading annotation for 2401/4952
+Reading annotation for 2501/4952
+Reading annotation for 2601/4952
+Reading annotation for 2701/4952
+Reading annotation for 2801/4952
+Reading annotation for 2901/4952
+Reading annotation for 3001/4952
+Reading annotation for 3101/4952
+Reading annotation for 3201/4952
+Reading annotation for 3301/4952
+Reading annotation for 3401/4952
+Reading annotation for 3501/4952
+Reading annotation for 3601/4952
+Reading annotation for 3701/4952
+Reading annotation for 3801/4952
+Reading annotation for 3901/4952
+Reading annotation for 4001/4952
+Reading annotation for 4101/4952
+Reading annotation for 4201/4952
+Reading annotation for 4301/4952
+Reading annotation for 4401/4952
+Reading annotation for 4501/4952
+Reading annotation for 4601/4952
+Reading annotation for 4701/4952
+Reading annotation for 4801/4952
+Reading annotation for 4901/4952
+Saving cached annotations to /nfs/153/gpu/amands/faster-rcnn.pytorch/data/VOCdevkit2007/VOC2007/ImageSets/Main/test.txt_annots.pkl
+AP for aeroplane = 0.3014
+AP for bicycle = 0.3530
+AP for bird = 0.4652
+AP for boat = 0.2467
+AP for bottle = 0.2304
+AP for bus = 0.2031
+AP for car = 0.6290
+AP for cat = 0.4227
+AP for chair = 0.2584
+AP for cow = 0.2291
+AP for diningtable = 0.3469
+AP for dog = 0.4305
+AP for horse = 0.5706
+AP for motorbike = 0.5558
+AP for person = 0.5814
+AP for pottedplant = 0.2268
+AP for sheep = 0.2673
+AP for sofa = 0.4041
+AP for train = 0.3865
+AP for tvmonitor = 0.5299
+Mean AP = 0.3819
+~~~~~~~~
+Results:
+0.301
+0.353
+0.465
+0.247
+0.230
+0.203
+0.629
+0.423
+0.258
+0.229
+0.347
+0.430
+0.571
+0.556
+0.581
+0.227
+0.267
+0.404
+0.387
+0.530
+0.382
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 594.2382s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ tmux attach -t new
+[detached (from session new)]
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT            ^C      --cuda
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=2
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+^C
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ tmux attach -t new
+[detached (from session new)]
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=2, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_2_2504.pth
+load model successfully!
+Evaluating detections0.046s 0.014s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.4722
+AP for bicycle = 0.5975
+AP for bird = 0.5048
+AP for boat = 0.3413
+AP for bottle = 0.3924
+AP for bus = 0.4805
+AP for car = 0.7082
+AP for cat = 0.6176
+AP for chair = 0.3168
+AP for cow = 0.5408
+AP for diningtable = 0.3903
+AP for dog = 0.4759
+AP for horse = 0.6670
+AP for motorbike = 0.5646
+AP for person = 0.6908
+AP for pottedplant = 0.2845
+AP for sheep = 0.5499
+AP for sofa = 0.4483
+AP for train = 0.4065
+AP for tvmonitor = 0.5709
+Mean AP = 0.5010
+~~~~~~~~
+Results:
+0.472
+0.598
+0.505
+0.341
+0.392
+0.481
+0.708
+0.618
+0.317
+0.541
+0.390
+0.476
+0.667
+0.565
+0.691
+0.285
+0.550
+0.448
+0.407
+0.571
+0.501
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 552.2286s
+
+
+
+33333333333333
+
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --che^Csession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=3^C
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=3
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ tmux attach -t new
+[detached (from session new)]
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ tmux attach -t new
+[detached (from session new)]
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=3, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_3_2504.pth
+load model successfully!
+Evaluating detections0.052s 0.013s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6229
+AP for bicycle = 0.6919
+AP for bird = 0.5489
+AP for boat = 0.3950
+AP for bottle = 0.4166
+AP for bus = 0.6723
+AP for car = 0.7884
+AP for cat = 0.6916
+AP for chair = 0.3919
+AP for cow = 0.5769
+AP for diningtable = 0.4669
+AP for dog = 0.6388
+AP for horse = 0.7080
+AP for motorbike = 0.6927
+AP for person = 0.7170
+AP for pottedplant = 0.3302
+AP for sheep = 0.5869
+AP for sofa = 0.5149
+AP for train = 0.6238
+AP for tvmonitor = 0.6250
+Mean AP = 0.5850
+~~~~~~~~
+Results:
+0.623
+0.692
+0.549
+0.395
+0.417
+0.672
+0.788
+0.692
+0.392
+0.577
+0.467
+0.639
+0.708
+0.693
+0.717
+0.330
+0.587
+0.515
+0.624
+0.625
+0.585
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 597.5663s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+444444444444444
+
+
+
+
+
+
+
+
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=4
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=4, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_4_2504.pth
+load model successfully!
+Evaluating detections0.061s 0.014s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.5989
+AP for bicycle = 0.7143
+AP for bird = 0.6198
+AP for boat = 0.5098
+AP for bottle = 0.4765
+AP for bus = 0.5814
+AP for car = 0.7525
+AP for cat = 0.6834
+AP for chair = 0.3371
+AP for cow = 0.6262
+AP for diningtable = 0.5328
+AP for dog = 0.6465
+AP for horse = 0.7423
+AP for motorbike = 0.7134
+AP for person = 0.7183
+AP for pottedplant = 0.3417
+AP for sheep = 0.6407
+AP for sofa = 0.5238
+AP for train = 0.5548
+AP for tvmonitor = 0.6158
+Mean AP = 0.5965
+~~~~~~~~
+Results:
+0.599
+0.714
+0.620
+0.510
+0.476
+0.581
+0.752
+0.683
+0.337
+0.626
+0.533
+0.647
+0.742
+0.713
+0.718
+0.342
+0.641
+0.524
+0.555
+0.616
+0.597
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 1185.7136s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+
+77777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=7
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=7, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_7_2504.pth
+load model successfully!
+Evaluating detections0.048s 0.013s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6339
+AP for bicycle = 0.7274
+AP for bird = 0.6065
+AP for boat = 0.4723
+AP for bottle = 0.4583
+AP for bus = 0.7420
+AP for car = 0.8012
+AP for cat = 0.7577
+AP for chair = 0.3594
+AP for cow = 0.6739
+AP for diningtable = 0.5611
+AP for dog = 0.6847
+AP for horse = 0.7721
+AP for motorbike = 0.7200
+AP for person = 0.7486
+AP for pottedplant = 0.3837
+AP for sheep = 0.6400
+AP for sofa = 0.5566
+AP for train = 0.6499
+AP for tvmonitor = 0.6638
+Mean AP = 0.6306
+~~~~~~~~
+Results:
+0.634
+0.727
+0.607
+0.472
+0.458
+0.742
+0.801
+0.758
+0.359
+0.674
+0.561
+0.685
+0.772
+0.720
+0.749
+0.384
+0.640
+0.557
+0.650
+0.664
+0.631
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 703.0488s
+
+
+
+
+Mean AP = 0.6901
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5555555555555555
+
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=5
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=5, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_5_2504.pth
+load model successfully!
+im_detect: 1867/4952 0.046s 0.017s   
+Evaluating detections0.048s 0.013s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6108
+AP for bicycle = 0.7300
+AP for bird = 0.5991
+AP for boat = 0.5327
+AP for bottle = 0.4373
+AP for bus = 0.6908
+AP for car = 0.7958
+AP for cat = 0.6840
+AP for chair = 0.3730
+AP for cow = 0.6764
+AP for diningtable = 0.5793
+AP for dog = 0.6702
+AP for horse = 0.7442
+AP for motorbike = 0.7289
+AP for person = 0.7413
+AP for pottedplant = 0.3685
+AP for sheep = 0.6293
+AP for sofa = 0.5030
+AP for train = 0.6404
+AP for tvmonitor = 0.6569
+Mean AP = 0.6196
+~~~~~~~~
+Results:
+0.611
+0.730
+0.599
+0.533
+0.437
+0.691
+0.796
+0.684
+0.373
+0.676
+0.579
+0.670
+0.744
+0.729
+0.741
+0.368
+0.629
+0.503
+0.640
+0.657
+0.620
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 676.6166s
+
+
+
+
+
+6666666666666666666666666666666666666666
+EPOCH=6
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=6, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_6_2504.pth
+load model successfully!
+im_detect: 937/4952 0.053s 0.015s   
+im_detect: 3538/4952 0.056s 0.025s   
+Evaluating detections0.048s 0.015s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6293
+AP for bicycle = 0.7326
+AP for bird = 0.6118
+AP for boat = 0.5062
+AP for bottle = 0.4749
+AP for bus = 0.6460
+AP for car = 0.8087
+AP for cat = 0.5895
+AP for chair = 0.3588
+AP for cow = 0.5903
+AP for diningtable = 0.5540
+AP for dog = 0.5818
+AP for horse = 0.7547
+AP for motorbike = 0.7159
+AP for person = 0.7024
+AP for pottedplant = 0.3825
+AP for sheep = 0.6224
+AP for sofa = 0.5683
+AP for train = 0.5927
+AP for tvmonitor = 0.6656
+Mean AP = 0.6044
+~~~~~~~~
+Results:
+0.629
+0.733
+0.612
+0.506
+0.475
+0.646
+0.809
+0.589
+0.359
+0.590
+0.554
+0.582
+0.755
+0.716
+0.702
+0.382
+0.622
+0.568
+0.593
+0.666
+0.604
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 836.4605s
+
+
+
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=7
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=7, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_7_2504.pth
+load model successfully!
+Evaluating detections0.048s 0.013s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6339
+AP for bicycle = 0.7274
+AP for bird = 0.6065
+AP for boat = 0.4723
+AP for bottle = 0.4583
+AP for bus = 0.7420
+AP for car = 0.8012
+AP for cat = 0.7577
+AP for chair = 0.3594
+AP for cow = 0.6739
+AP for diningtable = 0.5611
+AP for dog = 0.6847
+AP for horse = 0.7721
+AP for motorbike = 0.7200
+AP for person = 0.7486
+AP for pottedplant = 0.3837
+AP for sheep = 0.6400
+AP for sofa = 0.5566
+AP for train = 0.6499
+AP for tvmonitor = 0.6638
+Mean AP = 0.6306
+~~~~~~~~
+Results:
+0.634
+0.727
+0.607
+0.472
+0.458
+0.742
+0.801
+0.758
+0.359
+0.674
+0.561
+0.685
+0.772
+0.720
+0.749
+0.384
+0.640
+0.557
+0.650
+0.664
+0.631
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 703.0488s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=8
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=8, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_8_2504.pth
+load model successfully!
+im_detect: 3681/4952 0.057s 0.013s   
+Evaluating detections0.049s 0.013s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.6448
+AP for bicycle = 0.7393
+AP for bird = 0.5439
+AP for boat = 0.4170
+AP for bottle = 0.5110
+AP for bus = 0.6946
+AP for car = 0.8064
+AP for cat = 0.7500
+AP for chair = 0.4081
+AP for cow = 0.6727
+AP for diningtable = 0.5687
+AP for dog = 0.6270
+AP for horse = 0.7347
+AP for motorbike = 0.7231
+AP for person = 0.7418
+AP for pottedplant = 0.3653
+AP for sheep = 0.6079
+AP for sofa = 0.5423
+AP for train = 0.6587
+AP for tvmonitor = 0.6555
+Mean AP = 0.6206
+~~~~~~~~
+Results:
+0.645
+0.739
+0.544
+0.417
+0.511
+0.695
+0.806
+0.750
+0.408
+0.673
+0.569
+0.627
+0.735
+0.723
+0.742
+0.365
+0.608
+0.542
+0.659
+0.655
+0.621
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 642.9405s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ 
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cud^C
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=9
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=9, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_9_2504.pth
+load model successfully!
+Evaluating detections0.048s 0.014s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.7168
+AP for bicycle = 0.7926
+AP for bird = 0.6728
+AP for boat = 0.5346
+AP for bottle = 0.5487
+AP for bus = 0.7574
+AP for car = 0.8511
+AP for cat = 0.8255
+AP for chair = 0.4542
+AP for cow = 0.7503
+AP for diningtable = 0.6175
+AP for dog = 0.7761
+AP for horse = 0.8183
+AP for motorbike = 0.7548
+AP for person = 0.7654
+AP for pottedplant = 0.4386
+AP for sheep = 0.6871
+AP for sofa = 0.6218
+AP for train = 0.7131
+AP for tvmonitor = 0.7047
+Mean AP = 0.6901
+~~~~~~~~
+Results:
+0.717
+0.793
+0.673
+0.535
+0.549
+0.757
+0.851
+0.826
+0.454
+0.750
+0.617
+0.776
+0.818
+0.755
+0.765
+0.439
+0.687
+0.622
+0.713
+0.705
+0.690
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 659.1048s
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=10
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=10, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_10_2504.pth
+load model successfully!
+Evaluating detections0.072s 0.048s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.7031
+AP for bicycle = 0.7643
+AP for bird = 0.6662
+AP for boat = 0.5486
+AP for bottle = 0.5483
+AP for bus = 0.7673
+AP for car = 0.8500
+AP for cat = 0.8331
+AP for chair = 0.4541
+AP for cow = 0.7631
+AP for diningtable = 0.6169
+AP for dog = 0.7744
+AP for horse = 0.8171
+AP for motorbike = 0.7573
+AP for person = 0.7715
+AP for pottedplant = 0.4610
+AP for sheep = 0.6818
+AP for sofa = 0.6291
+AP for train = 0.7269
+AP for tvmonitor = 0.7091
+Mean AP = 0.6922
+~~~~~~~~
+Results:
+0.703
+0.764
+0.666
+0.549
+0.548
+0.767
+0.850
+0.833
+0.454
+0.763
+0.617
+0.774
+0.817
+0.757
+0.771
+0.461
+0.682
+0.629
+0.727
+0.709
+0.692
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 647.7708s
+
+
+
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ EPOCH=11
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+^CTraceback (most recent call last):
+  File "test_net.py", line 21, in <module>
+    import torch
+  File "/users/gpu/amands/miniconda2/envs/faster/lib/python2.7/site-packages/torch/__init__.py", line 181, in <module>
+    from .serialization import save, load
+  File "/users/gpu/amands/miniconda2/envs/faster/lib/python2.7/site-packages/torch/serialization.py", line 1, in <module>
+    import difflib
+KeyboardInterrupt
+(faster) [amands@cseproj152 faster-rcnn.pytorch]$ CUDA_VISIBLE_DEVICES=0 python test_net.py --dataset pascal_voc --net vgg16                    --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT                    --cuda
+Called with args:
+Namespace(cfg_file='cfgs/vgg16.yml', checkepoch=11, checkpoint=2504, checksession=1, class_agnostic=False, cuda=True, dataset='pascal_voc', large_scale=False, load_dir='models', mGPUs=False, net='vgg16', parallel_type=0, set_cfgs=None, vis=False)
+/nfs/153/gpu/amands/faster-rcnn.pytorch/lib/model/utils/config.py:374: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'CROP_RESIZE_WITH_MAX_POOL': False,
+ 'CUDA': False,
+ 'DATA_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'vgg16',
+ 'FEAT_STRIDE': [16],
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MAX_NUM_GT_BOXES': 20,
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'align',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/nfs/153/gpu/amands/faster-rcnn.pytorch',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'BN_TRAIN': False,
+           'DISPLAY': 10,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.01,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRIM_HEIGHT': 600,
+           'TRIM_WIDTH': 600,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0005},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /nfs/153/gpu/amands/faster-rcnn.pytorch/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 roidb entries
+load checkpoint models/vgg16/pascal_voc/faster_rcnn_1_11_2504.pth
+load model successfully!
+im_detect: 1746/4952 0.052s 0.042s   
+im_detect: 4797/4952 0.047s 0.013s   
+Evaluating detections0.061s 0.027s   
+Writing aeroplane VOC results file
+Writing bicycle VOC results file
+Writing bird VOC results file
+Writing boat VOC results file
+Writing bottle VOC results file
+Writing bus VOC results file
+Writing car VOC results file
+Writing cat VOC results file
+Writing chair VOC results file
+Writing cow VOC results file
+Writing diningtable VOC results file
+Writing dog VOC results file
+Writing horse VOC results file
+Writing motorbike VOC results file
+Writing person VOC results file
+Writing pottedplant VOC results file
+Writing sheep VOC results file
+Writing sofa VOC results file
+Writing train VOC results file
+Writing tvmonitor VOC results file
+VOC07 metric? Yes
+AP for aeroplane = 0.7122
+AP for bicycle = 0.7740
+AP for bird = 0.6631
+AP for boat = 0.5451
+AP for bottle = 0.5332
+AP for bus = 0.7536
+AP for car = 0.8468
+AP for cat = 0.8265
+AP for chair = 0.4626
+AP for cow = 0.7376
+AP for diningtable = 0.6063
+AP for dog = 0.7922
+AP for horse = 0.8146
+AP for motorbike = 0.7554
+AP for person = 0.7716
+AP for pottedplant = 0.4693
+AP for sheep = 0.6876
+AP for sofa = 0.6374
+AP for train = 0.7096
+AP for tvmonitor = 0.7121
+Mean AP = 0.6905
+~~~~~~~~
+Results:
+0.712
+0.774
+0.663
+0.545
+0.533
+0.754
+0.847
+0.826
+0.463
+0.738
+0.606
+0.792
+0.815
+0.755
+0.772
+0.469
+0.688
+0.637
+0.710
+0.712
+0.691
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+test time: 662.9148s

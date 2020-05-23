@@ -320,7 +320,7 @@ if __name__ == '__main__':
 
   if args.use_tfboard:
     from tensorboardX import SummaryWriter
-    logger = SummaryWriter("logs")
+    logger = SummaryWriter("logs/" + str(args.session))
 
   for epoch in range(args.start_epoch, args.max_epochs + 1):
     # setting to train mode
